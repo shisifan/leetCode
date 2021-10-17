@@ -1,3 +1,4 @@
+// 异或
 const arr = [10, 2, 2 , 1, 0, 0, 10]
 function findSingle(arr) {
     let res = 0;
@@ -6,6 +7,7 @@ function findSingle(arr) {
     })
     return res;
 }
+
 // function findSingle(arr) {
 //     const single = new Set();
 //     arr.forEach((num) => {
@@ -17,4 +19,5 @@ function findSingle(arr) {
 //     });
 //     return single.values().next().value;
 // }
+
 console.log(findSingle(arr) ); 

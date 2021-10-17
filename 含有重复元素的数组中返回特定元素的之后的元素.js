@@ -5,7 +5,7 @@ function elementAfter(arr, target){
             res.push(arr[i])
         }
     }
-    console.log(res);
+    // console.log(res);
     for(let i = 0; i < res.length; i++){
         if(res[i] === target){
             return res[i+1];
