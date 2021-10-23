@@ -19,4 +19,4 @@ function scale(n) {
     }
     return arr.join("");
 } 
-console.log(scale(222));
+console.log(scale(223));
