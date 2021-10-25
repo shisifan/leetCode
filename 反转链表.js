@@ -1,8 +1,8 @@
 // 迭代
-let reverseList = function (head) {
+let reverseList = function(head) {
     let pre = null;
     let cur = head;
-    while(cur){
+    while(cur) {
         const next = cur.next;
         cur.next = pre;
         pre = cur;
@@ -10,4 +10,3 @@ let reverseList = function (head) {
     }
     return pre;
 }
-
