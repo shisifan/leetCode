@@ -1,21 +1,17 @@
-function count(str) {
-    for(var i = 0; i < str.length; i++){
-        var key = str[i];
-        if (!obj[key]) {
-            obj[key] = 1;
-        } else {
-            obj[key] ++;
-        }
-        }
-        var max = -1;
-        var max_key = '';
-        var key;
-        for(key in obj){
-            if(max<obj[key]){
-            max=obj[key];
-            max_key = key;
-        }
+function count(str){
+    const map = new Map();
+    const result = [];
+    for(const char of str) {
+      map.set(char, (map.get(char) || 0) + 1);
     }
-    return max;
+    console.log(map);
+    const max = Math.max(...map.values());
+
+    for(const [key, value] of map) {
+      if(value === max) {
+        result.push(key);
+      }
+    }
+    return result.length === 1 ? result[0] : result;
 }
-console.log(count('abbccc'));
+console.log(count('abbcccddd'));
