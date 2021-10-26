@@ -4,7 +4,7 @@ function race(promises) {
         if(len === 0) return;
         for(let i = 0; i < len; i++){
             Promise.resolve(promises[i]).then(data => {
-                resolve(data);1
+                resolve(data);
                 return;
             }).catch(err => {
                 reject(err);
