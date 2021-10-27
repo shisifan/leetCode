@@ -1,33 +1,31 @@
-// 方法1：使用concat
-const flatten1 = (arr) => {
-    while (arr.some((item) => Array.isArray(item))) {
-        arr = [].concat(...arr);
+function mergeSort(arr) {
+    let len = arr.length;
+    if(len < 2) {
+        return arr;
     }
-    return arr;
+    let middle = Math.floor(len / 2);
+    let left = arr.slice(0, middle);
+    let right = arr.slice(middle, len);
+    let mergeSortLeft = mergeSort(left);
+    let mergeSortRight = mergeSort(right);
+    return merge(mergeSortLeft, mergeSortRight);
 }
-// 方法2：使用reduce
-const flatten2 = arr => {
-    arr.reduce(
-        (acc, cur) => {
-            Array.isArray(cur) ? [...acc, ...flatten2(cur)] : [...acc, cur],[]
+const merge = (left, right) => {
+    const res = [];
+    while(left.length && right.length) {
+        if(left[0] <= right[0]) {
+            res.push(left.shift());
+        } else {
+            res.push(right.shift());
         }
-    );
-}
-// 方法3
-function sortFlatArray (arr) {
-    function flatArray (arr) {
-        const newArr = arr.flat();
-        return newArr.some(item => Array.isArray(item)) ? flatArray(newArr) : newArr
     }
-    if (!arr || !arr.length) {
-        return [];
+    while(left.length) {
+        res.push(left.shift());
     }
-    let flattenedArr = flatArray(arr);
-    return flattenedArr.sort((a, b) => {
-        return a - b;
-    })
+    while(right.length) {
+        res.push(right.shift());
+    }
+    return res;
 }
-var arr = [1, 2, [3, 4, [5, 6], 7, 8]];
-console.log(flatten1(arr));
-// console.log(flatten2(arr));
-console.log(sortFlatArray(arr));
+
+console.log(mergeSort([1, 3, 2, 6, 4, 9, 7]));
