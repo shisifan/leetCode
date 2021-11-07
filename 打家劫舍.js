@@ -9,6 +9,6 @@ var rob = function(nums) {
     for(let i = 2; i <= len; i++) {
         dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
     }
-    return dp[len]
+    return dp[len];
 };
 console.log(rob([1,2]));
